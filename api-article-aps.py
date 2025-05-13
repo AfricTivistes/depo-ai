@@ -76,6 +76,11 @@ def fetch_election_articles():
     driver.quit()
     return results
 
+@app.route('/', methods=['GET'])
+def index():
+    # Redirige vers l'API ou affiche un message simple
+    return "API d'articles sur les élections. Utilisez /api/election-articles pour obtenir les données."
+
 @app.route('/api/articles-aps', methods=['GET'])
 def get_election_articles():
     articles = fetch_election_articles()

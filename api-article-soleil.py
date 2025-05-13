@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -62,6 +62,11 @@ def scrap_articles():
 
     driver.quit()
     return results
+
+@app.route('/', methods=['GET'])
+def index():
+    # Redirige vers l'API ou affiche un message simple
+    return "API d'articles sur les élections. Utilisez /api/election-articles pour obtenir les données."
 
 @app.route('/api/election-articles', methods=['GET'])
 def get_election_articles():
