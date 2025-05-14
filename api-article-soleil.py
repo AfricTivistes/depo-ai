@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, redirect
+from flask import Flask, jsonify
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -9,9 +9,15 @@ app = Flask(__name__)
 KEYWORDS = ["élection présidentielle", "présidentielle", "élections présidentielles",
             "élection législative", "législative", "élections législatives"]
 
+
 def scrap_articles():
     options = Options()
     options.add_argument("--headless")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.binary_location = "/usr/bin/google-chrome"
+
     driver = webdriver.Chrome(options=options)
 
     url = "https://lesoleil.sn/rubriques/actualites/politique/"
@@ -63,15 +69,18 @@ def scrap_articles():
     driver.quit()
     return results
 
+
 @app.route('/', methods=['GET'])
 def index():
     # Redirige vers l'API ou affiche un message simple
     return "API d'articles sur les élections. Utilisez /api/election-articles pour obtenir les données."
+
 
 @app.route('/api/election-articles', methods=['GET'])
 def get_election_articles():
     articles = scrap_articles()
     return jsonify(articles)
 
+
 if __name__ == '__main__':
-    app.run(host = "0.0.0.0", debug=True, port=5000)
+    app.run(host="0.0.0.0", debug=True, port=5000)
