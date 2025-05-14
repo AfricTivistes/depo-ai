@@ -1,6 +1,7 @@
-flask
 requests
 bs4
 reportlab
 docx
-selenium
+Flask==2.2.3
+gunicorn==20.1.0
+selenium==4.10.0
