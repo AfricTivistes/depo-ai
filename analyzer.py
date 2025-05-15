@@ -12,7 +12,7 @@ class SecurityAuditAnalyzer:
         )
         self.model = model
         self.extra_headers = {
-            "HTTP-Referer": "http://localhost:8000",  # À remplacer par votre URL en prod
+            "HTTP-Referer": "https://adisa.africtivistes.com/",  # À remplacer par votre URL en prod
             "X-Title": "Security Audit API"
         }
 
