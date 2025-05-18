@@ -5,7 +5,7 @@ from openai import OpenAI
 
 
 class SecurityAuditAnalyzer:
-    def __init__(self, api_key, model="deepseek/deepseek-chat", api_url="https://openrouter.ai/api/v1"):
+    def __init__(self, api_key, model="deepseek/deepseek-chat:free", api_url="https://openrouter.ai/api/v1"):
         self.client = OpenAI(
             base_url=api_url,
             api_key=api_key

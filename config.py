@@ -1,8 +1,8 @@
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    OPENROUTER_API_KEY: str ="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"
-    MODEL: str = "deepseek/deepseek-chat"
+    OPENROUTER_API_KEY: str  # Plus de valeur par défaut dans le code
+    MODEL: str = "deepseek/deepseek-chat:free"
     API_URL: str = "https://openrouter.ai/api/v1"
 
     class Config:
